@@ -1,6 +1,7 @@
 print("Welcome to Python Quiz Game")
 print("You will be presented with questions and four options each.")
 print("Type the letter of the option you think is correct.")
+print("Price Chart: \n Q1 - ₹2,000 \n Q2 - ₹4,000\n Q3 - ₹10,000 (checkpoint)\n Q4 - ₹20,000 \n Q5 - ₹60,000\n Q6 - ₹1,40,000 (checkpoint)\n Q7 - ₹3,20,000 \n Q8 - ₹5,60,000 (checkpoint)\n Q9 - ₹7,50,000\n Q10 - ₹10,00,000 \n")
 print("Let's get started!\n\n")
 
 def Gameover():
@@ -18,27 +19,45 @@ questions = [  "1. What is the capital of India?\n a. Delhi \t b. Mumbai\n c. Ko
               "10. Who first invented light?\n a. Issac Newton\t b. Nikola Tesla\n c. Albert Einstein\t d. Thomas Edison\n "]
 
 answers = ['a', 'c', 'b', 'd', 'c', 'd', 'a', 'b', 'c', 'd']
+levels = ["2,000","4,000","10,000",'20,000','60,000','1,40,000','3,20,000','5,60,000','7,50,000','10,00,000']
 score = 0
+money = 0
 
-for i in range(10):
+for i in range(len(questions)):
+    print(f"Question for Rs {levels[i]}")
     print(questions[i])
     answer = input("Your answer (a/b/c/d): ").lower()
 
     if(answer== answers[i]):
-        print("\nCorrect answer! \nNext Question \n")
+        print(f"Correct answer! \n")
         score+=1
     
     else:
         print(f"\nOops! Wrong answer \tCorrect answer is {answers[i]}")
         break
 
+    if (i<2):
+       money=0
+       print("Money: ",money ,"\n")
+    elif (i<=4):
+       money='10,000'
+       print("Money: ",money,"\n")
+    elif (i<=6):
+       money='1,40,000'
+       print("Money: ",money,"\n")
+    elif (i<9):
+       money='5,60,000'
+       print("Money: ",money,"\n")
+    else:
+       money='10,00,000'
+       print("Money: ", money, "\n")
 
 if(score==10):
-    print(f"Excellent! You got all questions right!\nCongratulations you won the game \nScore: {score}/{len(questions)}")
+    print(f"Excellent! You got all questions right!\nCongratulations you won Rs {levels[-1]} 🎉 \nScore: {score}/{len(questions)}")
     Gameover()
 elif(score>= len(questions)/2):
-    print(f"Good job! You did well. Score: {score}/{len(questions)}")
+    print(f"Good job! You Well Played. Score: {score}/{len(questions)} \nMoney Won: Rs {money}")
     Gameover()
 else:
-    print(f"Your score is {score}/{len(questions)} \nBetter luck Next time")
+    print(f"Your score is {score}/{len(questions)} \nMoney won: Rs {money}\nBetter luck Next time")
     Gameover()
